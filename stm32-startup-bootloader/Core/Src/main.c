@@ -23,6 +23,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "uart.h"
+#include "config.h"
+#include "flash.h"
+#include "xmodem.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -89,27 +92,23 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  uart_transmit_ch(7); // Transmit bell
-  uint8_t buf[8];
-  uint8_t * flash_cmd = (uint8_t *)("flashfw");
+  uart_transmit_ch(7); // Transmit BEL character
+  // Handle "flashfw" command
+  uint8_t resp = 0;
 
-  // Take first command
-  uart_status bootmode = uart_receive(buf, 7);
-
-  // Check the commmand
-  if(bootmode == UART_OK) {
-	  uint8_t cmd_match = 1;
-	  for(int i = 0; i < 7;i++)
-		  if(buf[i] != flash_cmd[i])
-			  cmd_match = 0;
-	  if(cmd_match > 0) {
-		  uart_transmit_str((uint8_t *)("Flashing firmware!\n\r"));
-	  }else{
-		  uart_transmit_str((uint8_t *)("Incorrect command sent!\n\r"));
+  // Check if the reponse was an ACK character
+  if(uart_receive(&resp, 1) == UART_OK) {
+	  if(resp == 6) {
+		  uart_transmit_str((uint8_t *)(MCU_TYPE));
+		  if(uart_receive(&resp, 1) == UART_OK) {
+			  if(resp == 6) {
+//				  uart_transmit_str((uint8_t *)("Flashing firmware!"));
+				  xmodem_receive();
+			  }
+		  }
 	  }
-  }else{
-	  uart_transmit_str((uint8_t *)("No command sent!\n\r"));
   }
+  flash_jump_to_app();
   /* USER CODE END 2 */
 
   /* Infinite loop */

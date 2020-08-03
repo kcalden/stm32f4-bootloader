@@ -8,14 +8,29 @@
 #ifndef CONFIG_H_
 #define CONFIG_H_
 
+/*****************/
+/* MANUAL CONFIG */
+/*****************/
+
 /* MCU ID */
 #define F411RE
 //#define F446RC
 //#define F411RC
 
+/***************/
 /* AUTO CONFIG */
+/***************/
 
-// DEFINE SIZE OF THE FLASH MEMORY
+/* MCU Signature */
+#if defined(F411RE)
+#define MCU_TYPE "F411RE"
+#elif defined(F446RC)
+#define MCU_TYPE "F446RC"
+#elif defined(F411RC)
+#define MCU_TYPE "F411RC"
+#endif
+
+/* Flash memory params */
 #if defined(F411RC) | defined(F446RC)
 #define FLASH_SIZE_256K
 #elif defined(F411RE)
