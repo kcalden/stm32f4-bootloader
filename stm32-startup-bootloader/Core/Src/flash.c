@@ -28,8 +28,9 @@ flash_status flash_erase(uint32_t address)
 
   erase_init.TypeErase = FLASH_TYPEERASE_SECTORS;
   erase_init.Sector = FLASH_SECTOR_1;
-//  erase_init.Banks = FLASH_BANK_1;
+  erase_init.Banks = FLASH_BANK_1;
   erase_init.NbSectors = NUM_USER_SECTORS;
+  erase_init.VoltageRange = FLASH_VOLTAGE_RANGE_3;
   /* Do the actual erasing. */
   if (HAL_OK == HAL_FLASHEx_Erase(&erase_init, &error))
   {
@@ -52,7 +53,7 @@ flash_status flash_erase(uint32_t address)
 flash_status flash_write(uint32_t address, uint32_t *data, uint32_t length)
 {
   flash_status status = FLASH_OK;
-
+  __disable_irq();
   HAL_FLASH_Unlock();
 
   /* Loop through the array. */
@@ -82,7 +83,7 @@ flash_status flash_write(uint32_t address, uint32_t *data, uint32_t length)
   }
 
   HAL_FLASH_Lock();
-
+  __enable_irq();
   return status;
 }
 

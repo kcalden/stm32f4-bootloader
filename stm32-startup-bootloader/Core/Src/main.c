@@ -94,7 +94,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   uart_transmit_ch(7); // Transmit BEL character
   // Handle "flashfw" command
-  volatile uint8_t resp = 0;
+  uint8_t resp = 0;
 
   // Check if the reponse was an ACK character
   if(uart_receive(&resp, 1) == UART_OK) {
