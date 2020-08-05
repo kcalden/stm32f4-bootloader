@@ -16,4 +16,5 @@ int str_cmp(uint8_t * s1, uint8_t * s2, unsigned int length) {
 			break;
 		}
 	}
+	return match;
 }

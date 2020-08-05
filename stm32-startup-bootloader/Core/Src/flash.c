@@ -8,6 +8,7 @@
  */
 
 #include "flash.h"
+#include "config.h"
 
 /* Function pointer for jumping to user application. */
 typedef void (*fnc_ptr)(void);
@@ -19,14 +20,15 @@ typedef void (*fnc_ptr)(void);
  */
 flash_status flash_erase(uint32_t address)
 {
+  __disable_irq();
   HAL_FLASH_Unlock();
-
   flash_status status = FLASH_ERROR;
   FLASH_EraseInitTypeDef erase_init;
   uint32_t error = 0u;
 
   erase_init.TypeErase = FLASH_TYPEERASE_SECTORS;
   erase_init.Sector = FLASH_SECTOR_1;
+//  erase_init.Banks = FLASH_BANK_1;
   erase_init.NbSectors = NUM_USER_SECTORS;
   /* Do the actual erasing. */
   if (HAL_OK == HAL_FLASHEx_Erase(&erase_init, &error))
@@ -35,6 +37,7 @@ flash_status flash_erase(uint32_t address)
   }
 
   HAL_FLASH_Lock();
+  __enable_irq();
 
   return status;
 }
