@@ -86,8 +86,8 @@ void xmodem_receive(void)
       case X_EOT:
         /* ACK, feedback to user (as a text), then jump to user application. */
         (void)uart_transmit_ch(X_ACK);
-        (void)uart_transmit_str((uint8_t*)"\n\rFirmware updated!\n\r");
-        (void)uart_transmit_str((uint8_t*)"Jumping to user application...\n\r");
+//        (void)uart_transmit_str((uint8_t*)"\n\rFirmware updated!\n\r");
+//        (void)uart_transmit_str((uint8_t*)"Jumping to user application...\n\r");
         flash_jump_to_app();
         break;
       /* Abort from host. */
@@ -182,7 +182,7 @@ static xmodem_status xmodem_handle_packet(uint8_t header)
   /* If it is the first packet, then erase the memory. */
   if ((X_OK == status) && (false == x_first_packet_received))
   {
-    if (FLASH_OK == flash_erase(FLASH_APP_START_ADDRESS))
+    if (FLASH_OK == flash_erase())
     {
       x_first_packet_received = true;
     }
