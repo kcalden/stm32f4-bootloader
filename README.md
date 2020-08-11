@@ -21,6 +21,22 @@ The MCU then clears the memory reserved for the application and begins file tran
 
 After the binary is transferred, the MCU jumps to the application code. 
 
+# How to build for an MCU
+
+The makefile can build for the following MCUs:
+
+- stm32f446retx
+- stm32f411retx
+- stm32f411rctx
+
+To make a binary for the MCU, cd into the directory of the make file and run `make mcu=<mcu type from the list above>`.
+
+For example, if I was building for an STM32F411RCT6, I would run:
+
+```
+make mcu=stm32f411rct6
+```
+
 # Recommended circuitry
 
 The DTR reset circuitry is the same as on the Arduino, but for reference:
