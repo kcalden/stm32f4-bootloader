@@ -6,21 +6,26 @@ SourceFiles=Core\Src\main.c;Core\Src\stm32f4xx_it.c;Core\Src\stm32f4xx_hal_msp.c
 HeaderPath=Drivers\STM32F4xx_HAL_Driver\Inc;Drivers\STM32F4xx_HAL_Driver\Inc\Legacy;Drivers\CMSIS\Device\ST\STM32F4xx\Include;Drivers\CMSIS\Include;Core\Inc;
 CDefines=USE_HAL_DRIVER;STM32F411xE;USE_HAL_DRIVER;USE_HAL_DRIVER;
 
+[PreviousUsedMakefileFiles]
+SourceFiles=Core\Src\main.c;Core\Src\stm32f4xx_it.c;Core\Src\stm32f4xx_hal_msp.c;Core\Src\stm32f4xx_hal_timebase_tim.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c;Core\Src/system_stm32f4xx.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c;Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c;Core\Src/system_stm32f4xx.c;Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c;;
+HeaderPath=Drivers\STM32F4xx_HAL_Driver\Inc;Drivers\STM32F4xx_HAL_Driver\Inc\Legacy;Drivers\CMSIS\Device\ST\STM32F4xx\Include;Drivers\CMSIS\Include;Core\Inc;
+CDefines=USE_HAL_DRIVER;STM32F411xE;USE_HAL_DRIVER;USE_HAL_DRIVER;
+
 [PreviousGenFiles]
 AdvancedFolderStructure=true
 HeaderFileListSize=3
-HeaderFiles#0=C:/Users/kcald/Desktop/stm32-startup-bootloader/Core/Inc/stm32f4xx_it.h
-HeaderFiles#1=C:/Users/kcald/Desktop/stm32-startup-bootloader/Core/Inc/stm32f4xx_hal_conf.h
-HeaderFiles#2=C:/Users/kcald/Desktop/stm32-startup-bootloader/Core/Inc/main.h
+HeaderFiles#0=C:/Users/kcald/GitRepos/stm32f4-bootloader/stm32-startup-bootloader/Core/Inc/stm32f4xx_it.h
+HeaderFiles#1=C:/Users/kcald/GitRepos/stm32f4-bootloader/stm32-startup-bootloader/Core/Inc/stm32f4xx_hal_conf.h
+HeaderFiles#2=C:/Users/kcald/GitRepos/stm32f4-bootloader/stm32-startup-bootloader/Core/Inc/main.h
 HeaderFolderListSize=1
-HeaderPath#0=C:/Users/kcald/Desktop/stm32-startup-bootloader/Core/Inc
+HeaderPath#0=C:/Users/kcald/GitRepos/stm32f4-bootloader/stm32-startup-bootloader/Core/Inc
 HeaderFiles=;
 SourceFileListSize=4
-SourceFiles#0=C:/Users/kcald/Desktop/stm32-startup-bootloader/Core/Src/stm32f4xx_it.c
-SourceFiles#1=C:/Users/kcald/Desktop/stm32-startup-bootloader/Core/Src/stm32f4xx_hal_msp.c
-SourceFiles#2=C:/Users/kcald/Desktop/stm32-startup-bootloader/Core/Src/stm32f4xx_hal_timebase_tim.c
-SourceFiles#3=C:/Users/kcald/Desktop/stm32-startup-bootloader/Core/Src/main.c
+SourceFiles#0=C:/Users/kcald/GitRepos/stm32f4-bootloader/stm32-startup-bootloader/Core/Src/stm32f4xx_it.c
+SourceFiles#1=C:/Users/kcald/GitRepos/stm32f4-bootloader/stm32-startup-bootloader/Core/Src/stm32f4xx_hal_msp.c
+SourceFiles#2=C:/Users/kcald/GitRepos/stm32f4-bootloader/stm32-startup-bootloader/Core/Src/stm32f4xx_hal_timebase_tim.c
+SourceFiles#3=C:/Users/kcald/GitRepos/stm32f4-bootloader/stm32-startup-bootloader/Core/Src/main.c
 SourceFolderListSize=1
-SourcePath#0=C:/Users/kcald/Desktop/stm32-startup-bootloader/Core/Src
+SourcePath#0=C:/Users/kcald/GitRepos/stm32f4-bootloader/stm32-startup-bootloader/Core/Src
 SourceFiles=;
 

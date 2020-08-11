@@ -2,3 +2,4 @@
 stm32-startup-bootloader/Debug/*
 stm32-startup-bootloader/stm32f4-bootloader Release*.launch
 *.launch
+build/
