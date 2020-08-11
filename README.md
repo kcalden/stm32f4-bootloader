@@ -1,13 +1,33 @@
 # STM32F4 Serial Bootloader
 STM32F4 serial bootloader using the libraries from https://github.com/ferenc-nemeth/stm32-bootloader.
 
-The programmer for the IAP is written in Rust and the source code is located @ https://github.com/kcalden/stm32-serial-uploader.
+The uploader is written in Rust and the source code is located @ https://github.com/kcalden/stm32-serial-uploader.
 
 **This bootloader assumes that UART1 is being used and the MCU has 8MHz HSE (On NUCLEO boards this is provided by the integrated ST-Link).** 
 
 **`SystemClock_Config()` must be altered to use a different crystal.**
 
 **`uart.c` and `uart.h` must be altered to use a different port.**
+
+# How the bootloader works
+
+To flash the firmware, the MCU must be reset.
+
+When the MCU is reset, it sends a BEL character through UART1 and the host responds to this with an ACK character.
+
+The MCU the sends its signature (ex. F411RE) for verification, telling the host what kind of MCU it is. The host responds an ACK character to pass verification.
+
+The MCU then clears the memory reserved for the application and begins file transfer using the XMODEM protocol.
+
+After the binary is transferred, the MCU jumps to the application code. 
+
+# Recommended circuitry
+
+The DTR reset circuitry is the same as on the Arduino, but for reference:
+
+![alt](./img/reset_circuitry.png)
+
+This will force the MCU to reset whenever the DTR pin is changed.
 
 # Uploading binaries using the bootloader
 
@@ -69,7 +89,3 @@ The new vector table offset can be added to build flags. For example, in MarlinF
 build_flags = ${common_stm32.build_flags}
     -DVECT_TAB_OFFSET=0x4000
 ```
-
-# Diagram of the bootloader
-
-![alt](./img/bootloader-diagram.png)
