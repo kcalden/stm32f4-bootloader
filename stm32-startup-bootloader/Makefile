@@ -147,12 +147,14 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 #######################################
 ifeq ($(mcu), stm32f446retx)
 C_DEFS += -DSTM32F446xx
+C_DEFS += -DF446RE
 LDSCRIPT=STM32F446RETx_FLASH.ld
 ASM_SOURCES = startup_stm32f446xx.s
 endif
 
 ifeq ($(mcu), stm32f411retx)
 C_DEFS += -DSTM32F411xE
+C_DEFS += -DF411RE
 LDSCRIPT=STM32F411RETX_FLASH.ld
 ASM_SOURCES = startup_stm32f411xe.s
 endif

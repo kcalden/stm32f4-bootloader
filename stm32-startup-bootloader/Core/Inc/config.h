@@ -13,7 +13,8 @@
 /*****************/
 
 /* MCU ID */
-#define F411RE
+// #define F411RE
+//#define F446RE
 //#define F446RC
 //#define F411RC
 
@@ -24,16 +25,20 @@
 /* MCU Signature */
 #if defined(F411RE)
 #define MCU_TYPE "F411RE"
-#elif defined(F446RC)
-#define MCU_TYPE "F446RC"
 #elif defined(F411RC)
 #define MCU_TYPE "F411RC"
+#elif defined(F446RE)
+#define MCU_TYPE "F446RE"
+#elif defined(F446RC)
+#define MCU_TYPE "F446RC"
+#else
+#error "MUST DEFINE MCU ID"
 #endif
 
 /* Flash memory params */
 #if defined(F411RC) | defined(F446RC)
 #define FLASH_SIZE_256K
-#elif defined(F411RE)
+#elif defined(F411RE) | defined(F446RE)
 #define FLASH_SIZE_512K
 #endif
 
