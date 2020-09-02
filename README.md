@@ -23,6 +23,14 @@ After the binary is transferred, the MCU jumps to the application code.
 
 # How to build for an MCU
 
+> On Arch Linux, this requires the following packages:
+>
+> - arm-none-eabi-binutils
+> - arm-none-eabi-gcc
+> - arm-none-eabi-gdb
+> - arm-none-eabi-newlib
+
+
 The makefile can build for the following MCUs:
 
 - stm32f446retx
