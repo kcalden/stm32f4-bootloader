@@ -34,7 +34,7 @@ To make a binary for the MCU, cd into the directory of the make file and run `ma
 For example, if I was building for an STM32F411RCT6, I would run:
 
 ```
-make mcu=stm32f411rct6
+make mcu=stm32f411rctx
 ```
 
 # Recommended circuitry
