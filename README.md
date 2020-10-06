@@ -44,7 +44,10 @@ For example, if I was building for an STM32F411RCT6, I would run:
 ```
 make mcu=stm32f411rctx
 ```
-
+# Flash using st-flash
+```
+st-flash write <binary_name> 0x8000000
+```
 # Recommended circuitry
 
 The DTR reset circuitry is the same as on the Arduino, but for reference:
