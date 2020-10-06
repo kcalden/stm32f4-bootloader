@@ -180,16 +180,18 @@ static xmodem_status xmodem_handle_packet(uint8_t header)
   }
 
   /* If it is the first packet, then erase the memory. */
+  // TODO: Move this outside of the file transfer routine
   if ((X_OK == status) && (false == x_first_packet_received))
   {
-    if (FLASH_OK == flash_erase())
-    {
-      x_first_packet_received = true;
-    }
-    else
-    {
-      status |= X_ERROR_FLASH;
-    }
+    x_first_packet_received = true;
+    // if (FLASH_OK == flash_erase())
+    // {
+    //   x_first_packet_received = true;
+    // }
+    // else
+    // {
+    //   status |= X_ERROR_FLASH;
+    // }
   }
 
   /* Error handling and flashing. */

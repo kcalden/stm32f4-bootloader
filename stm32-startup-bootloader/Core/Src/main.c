@@ -99,11 +99,14 @@ int main(void)
   // Check if the reponse was an ACK character
   if(uart_receive(&resp, 1) == UART_OK) {
 	  if(resp == 6) {
+      // Transmit MCU type
 		  uart_transmit_str((uint8_t *)(MCU_TYPE));
 		  if(uart_receive(&resp, 1) == UART_OK) {
 			  if(resp == 6) {
-//				  uart_transmit_str((uint8_t *)("Flashing firmware!"));
-				  xmodem_receive();
+          // Erase the flash memory and begin XMODEM file transfer
+          if (FLASH_OK == flash_erase()) {
+				    xmodem_receive();
+          }
 			  }
 		  }
 	  }
