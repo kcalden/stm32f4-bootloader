@@ -45,8 +45,15 @@ For example, if I was building for an STM32F411RCT6, I would run:
 make mcu=stm32f411rctx
 ```
 # Flash using st-flash
+
+Erase the chip using:
 ```
-st-flash write <binary_name> 0x8000000
+st-flash erase
+```
+
+Then program the chip using:
+```
+st-flash write <path to binary> 0x8000000
 ```
 # Recommended circuitry
 
