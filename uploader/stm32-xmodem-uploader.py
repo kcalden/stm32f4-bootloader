@@ -1,3 +1,9 @@
+# stm32-xmodem-uploader.py
+# 
+# Upload a firmware compiled for the stm32 xmodem bootloader
+#
+# Usage: python stm32-xmodem-uploader.py <serial port> <MCU type> <firmware.bin path>
+
 import serial, sys, os, math
 
 try:
