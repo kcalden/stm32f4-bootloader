@@ -1,9 +1,10 @@
-import serial
-import sys
+import serial, sys, os, math
+
 try:
     from xmodem import XMODEM
 except ImportError:
-    raise Exception('XMODEM module not found. Run "pip install xmodem" in powershell or terminal!')
+    raise("Error: xmodem library not installed!")
+
 
 ## Parameters from the development platform
 PORT_PATH = sys.argv[1] # Path to the serial port (ex. COM* on Windows or /dev/ttyUSB* on Linux)
@@ -19,20 +20,28 @@ BEL = b'\x07'
 ACK = b'\x06'
 NAK = b'\x15'
 
-# Define serial port and functions for XMODEM stream
+# Define open serial port
 port = serial.Serial(PORT_PATH, timeout=1, baudrate=BAUDRATE, rtscts=HARDWARE_FLOW_CONTROL)
-port.open()
+
+# Create modem and open firmware file
+binary_stream = open(BIN_PATH, 'rb')
+file_stats = os.stat(BIN_PATH)
+n_chunks = math.ceil(file_stats.st_size/128)
+chunks_sent = 0
+# print(file_stats.st_size)
+# sys.exit(1)
 
 def getc(size, timeout=1):
     return port.read(size) or None
 
 def putc(data, timeout=1):
+    global chunks_sent
+    if len(data) > 128:
+        chunks_sent = chunks_sent + 1
+        print("Sent {}/{} chunks.".format(chunks_sent,n_chunks))
     return port.write(data)
 
-# Create modem and open firmware file
 modem = XMODEM(getc, putc)
-binary_stream = open(BIN_PATH, 'rb')
-
 # Loop: Reset MCU and wait for BEL from serial port
 # Break: BEL received
 print('Resetting MCU and waiting for BEL')
@@ -51,7 +60,7 @@ while True:
 # Match: Send ACK
 # No match: Send NAK and raise error
 ser_data = port.read(6)
-if ser_data.startswith(bytes(MCU_TYPE)):
+if ser_data.startswith(bytes(MCU_TYPE, 'utf-8')):
     port.write(ACK)
     print('Correct MCU target. Sent ACK.')
 else:
@@ -69,4 +78,7 @@ while True:
     print('.', end='')
 
 # Begin XMODEM transfer
-modem.send(binary_stream)
+if modem.send(binary_stream):
+    print('Upload successful!')
+else:
+    print('Upload failure!')
