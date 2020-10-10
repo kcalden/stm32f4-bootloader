@@ -1,8 +1,6 @@
 # STM32F4 Serial Bootloader
 STM32F4 serial bootloader using the libraries from https://github.com/ferenc-nemeth/stm32-bootloader.
 
-The uploader is written in Rust and the source code is located @ https://github.com/kcalden/stm32-serial-uploader.
-
 **This bootloader assumes that UART1 is being used and the MCU has 8MHz HSE (On NUCLEO boards this is provided by the integrated ST-Link).** 
 
 **`SystemClock_Config()` must be altered to use a different crystal.**
