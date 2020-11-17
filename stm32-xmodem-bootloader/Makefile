@@ -152,6 +152,13 @@ LDSCRIPT=15KFLASH_128KRAM.ld
 ASM_SOURCES = startup_stm32f446xx.s
 endif
 
+ifeq ($(mcu), stm32f446rctx)
+C_DEFS += -DSTM32F446xx
+C_DEFS += -DF446RC
+LDSCRIPT=15KFLASH_128KRAM.ld
+ASM_SOURCES = startup_stm32f446xx.s
+endif
+
 ifeq ($(mcu), stm32f411retx)
 C_DEFS += -DSTM32F411xE
 C_DEFS += -DF411RE
